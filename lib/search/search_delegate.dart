@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/models/models.dart';
 import 'package:peliculas_app/providers/movies_provider.dart';
+import 'package:peliculas_app/share_preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
 class MovieSearchDelegate extends SearchDelegate {
@@ -42,8 +43,6 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    
-
     if (query.isEmpty) {
       return _emptyContainer();
     }
@@ -91,6 +90,8 @@ class _MovieItem extends StatelessWidget {
       subtitle: Text(movie.originalTitle),
       onTap: () async => {
         await moviesProvider.getTrailerPeli(movie.id.toString()),
+        Preferences.idLastMovie = movie.id.toString(),
+        moviesProvider.selectedMovie = movie,
         // ignore: use_build_context_synchronously
         Navigator.pushNamed(context, 'details', arguments: movie),
       },

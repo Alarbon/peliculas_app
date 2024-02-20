@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peliculas_app/models/movie.dart';
 import 'package:peliculas_app/providers/movies_provider.dart';
 import 'package:peliculas_app/search/search_delegate.dart';
+import 'package:peliculas_app/share_preferences/preferences.dart';
 import 'package:peliculas_app/widgets/favorite_movie_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -81,6 +82,8 @@ class FavoriteScreen extends StatelessWidget {
               ),
               onTap: () async => {
                 await moviesProvider.getTrailerPeli(movie.id.toString()),
+                Preferences.idLastMovie = movie.id.toString(),
+                moviesProvider.selectedMovie = movie,
                 // ignore: use_build_context_synchronously
                 Navigator.pushNamed(context, 'details', arguments: movie)
               },
