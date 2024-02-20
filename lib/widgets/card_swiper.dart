@@ -25,15 +25,15 @@ class CardSwiper extends StatelessWidget {
           child: const Center(child: CircularProgressIndicator()));
     }
     return SizedBox(
-      width: double.infinity,
+      width: size.width > 1300 ? size.height * 0.8 : double.infinity,
       height: size.height * 0.5,
       child: //swiper
           Swiper(
         itemCount: movies.length,
         layout: SwiperLayout.STACK,
         //si esta en web se cambia el tamaño el ancho
-        itemWidth: size.width > 1500 ? size.height * 0.3 : size.width * 0.6,
-        itemHeight: size.height * 0.4,
+        itemWidth: size.width > 1300 ? size.height * 0.3 : size.width * 0.55,
+        itemHeight: size.height > 1300 ? size.height * 0.5 : size.height * 0.4,
         itemBuilder: (BuildContext context, int index) {
           final movie = movies[index];
 

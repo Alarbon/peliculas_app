@@ -87343,13 +87343,17 @@ A.aa6.prototype={
 $1(a){return a},
 $S:45}
 A.Ig.prototype={
-F(a){var s,r=A.bb(a,null,t.w).w.a,q=A.ha(a,!0,t.C),p=this.c,o=J.bc(p)
-if(o.ga6(p))return A.e6(B.f2,r.b*0.5,1/0)
-s=r.b
-p=o.gC(p)
-o=r.a
-o=o>1500?s*0.3:o*0.6
-return A.e6(new A.tX(s*0.4,o,new A.a_s(this,q,r),p,B.zx,null),s*0.5,1/0)}}
+F(a){var s,r,q,p,o,n=A.bb(a,null,t.w).w.a,m=A.ha(a,!0,t.C),l=this.c,k=J.bc(l)
+if(k.ga6(l))return A.e6(B.f2,n.b*0.5,1/0)
+s=n.a
+r=s>1300
+q=r?n.b*0.8:1/0
+p=n.b
+o=p*0.5
+l=k.gC(l)
+k=r?p*0.3:s*0.55
+s=p>1300?o:p*0.4
+return A.e6(new A.tX(s,k,new A.a_s(this,m,n),l,B.zx,null),o,q)}}
 A.a_s.prototype={
 $2(a,b){var s,r,q=null,p=J.d2(this.a.c,b),o="swiper-"+p.c
 p.ay=o
