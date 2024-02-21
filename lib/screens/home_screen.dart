@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _HomeNavbarView();
+    return const SafeArea(child: _HomeNavbarView());
   }
 }
 

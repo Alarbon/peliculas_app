@@ -11,38 +11,40 @@ class HistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final moviesProvider = Provider.of<MoviesProvider>(context);
     if (moviesProvider.historyMovies.isEmpty) {
-      return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Alarbon Films'),
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 30.0,
-              color: Colors.white,
-            ),
-            onPressed: () => {
-              Preferences.lastPage = 'home',
-              Navigator.canPop(context)
-                  ? Navigator.pop(context)
-                  : Navigator.pushNamed(context, 'home'),
-            },
-          ),
-          actions: [
-            IconButton(
+      return SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: const Text('Alarbon Films'),
+            elevation: 0,
+            leading: IconButton(
               icon: const Icon(
-                Icons.search_outlined,
+                Icons.arrow_back_ios_new_rounded,
                 size: 30.0,
                 color: Colors.white,
               ),
-              onPressed: () =>
-                  showSearch(context: context, delegate: MovieSearchDelegate()),
-            )
-          ],
-        ),
-        body: const Center(
-          child: Text('Historial vacío'),
+              onPressed: () => {
+                Preferences.lastPage = 'home',
+                Navigator.canPop(context)
+                    ? Navigator.pop(context)
+                    : Navigator.pushNamed(context, 'home'),
+              },
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.search_outlined,
+                  size: 30.0,
+                  color: Colors.white,
+                ),
+                onPressed: () =>
+                    showSearch(context: context, delegate: MovieSearchDelegate()),
+              )
+            ],
+          ),
+          body: const Center(
+            child: Text('Historial vacío'),
+          ),
         ),
       );
     }

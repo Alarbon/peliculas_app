@@ -11,27 +11,29 @@ class DetailsActorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final MoviesProvider moviesProvider = Provider.of<MoviesProvider>(context);
     final ActorResponse? actor = moviesProvider.actor;
-    return Scaffold(
-      body: actor == null
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : CustomScrollView(
-              slivers: [
-                _CustomAppBar(),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      _PosterAndTitle(),
-                      const _Overview(),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+    return SafeArea(
+      child: Scaffold(
+        body: actor == null
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : CustomScrollView(
+                slivers: [
+                  _CustomAppBar(),
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        _PosterAndTitle(),
+                        const _Overview(),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+      ),
     );
   }
 }

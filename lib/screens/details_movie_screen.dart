@@ -19,38 +19,40 @@ class DetailsMovieScreen extends StatelessWidget {
     Movie? movie = moviesProvider.selectedMovie;
     final videoYoutube = moviesProvider.getVideo();
 
-    return Scaffold(
-        body: movie == null
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : CustomScrollView(
-                slivers: [
-                  _CustomAppBar(movie: movie),
-                  SliverList(
-                    delegate: movie == null
-                        ? SliverChildListDelegate([
-                            const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                          ])
-                        : SliverChildListDelegate(
-                            [
-                              _PosterAndTitle(movie: movie),
-                              _Overview(movie: movie),
-                              const SizedBox(
-                                height: 30,
+    return SafeArea(
+      child: Scaffold(
+          body: movie == null
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : CustomScrollView(
+                  slivers: [
+                    _CustomAppBar(movie: movie),
+                    SliverList(
+                      delegate: movie == null
+                          ? SliverChildListDelegate([
+                              const Center(
+                                child: CircularProgressIndicator(),
                               ),
-                              CastingCards(movieId: movie.id),
-                              videoYoutube != 'error'
-                                  ? YoutubePlayerWidget(
-                                      videoId: videoYoutube.toString())
-                                  : Container(),
-                            ],
-                          ),
-                  )
-                ],
-              ));
+                            ])
+                          : SliverChildListDelegate(
+                              [
+                                _PosterAndTitle(movie: movie),
+                                _Overview(movie: movie),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                CastingCards(movieId: movie.id),
+                                videoYoutube != 'error'
+                                    ? YoutubePlayerWidget(
+                                        videoId: videoYoutube.toString())
+                                    : Container(),
+                              ],
+                            ),
+                    )
+                  ],
+                )),
+    );
   }
 }
 
