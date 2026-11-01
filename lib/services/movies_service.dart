@@ -4,7 +4,8 @@ import 'package:http/http.dart';
 import 'package:peliculas_app/models/models.dart';
 
 class MoviesService {
-  final String _apiKey = 'a9dae8877c7d3d4387e4e7525609bb6f';
+  // La clave se pasa al compilar: --dart-define=TMDB_API_KEY=tu_clave
+  final String _apiKey = const String.fromEnvironment('TMDB_API_KEY');
   final String _baseUrl = 'api.themoviedb.org';
   final String _languaje = 'es-ES';
   final String urlFirebase =
