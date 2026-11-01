@@ -1,16 +1,25 @@
-# peliculas_app
+# Películas · Flutter web
 
-A new Flutter project.
+App de películas hecha con Flutter que consulta la API de TMDB: cartelera, próximos estrenos, mejor valoradas, populares, búsqueda, reparto, fichas de actores, tráileres y favoritos guardados en Firebase Realtime Database.
 
-## Getting Started
+**Estado:** proyecto de formación (2024). [Ver demo](https://alarbon-films.vercel.app)
 
-This project is a starting point for a Flutter application.
+## Tecnologías
 
-A few resources to get you started if this is your first Flutter project:
+Flutter y Dart · paquete `http` · API de TMDB · Firebase Realtime Database (REST)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Ejecución
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Necesitas una clave propia de la API de TMDB (gratuita en themoviedb.org). No la escribas en el código.
+
+```bash
+flutter pub get
+flutter run -d chrome --dart-define=TMDB_API_KEY=tu_clave
+flutter build web --dart-define=TMDB_API_KEY=tu_clave
+```
+
+En una app web la clave acaba en el JavaScript que descarga el navegador. Usa una clave dedicada solo a esta demo.
+
+## Licencia
+
+Pendiente de decidir.
